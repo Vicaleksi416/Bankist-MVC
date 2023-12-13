@@ -1,0 +1,7 @@
+0. Sync the git and github
+1. MVC Architecture and jQuery
+    1-? tab form -> review submit
+2. Media Query
+3. Turn index.HTML into ejs & create more ejs site
+4. Figure out uses of Express.js, ejs, body parser or parcel. Pick one to use.
+5. send it online
