@@ -25,6 +25,7 @@ import view from './views/view.js';
 const init = function () {
   view.closeModal(view.closeModalFn);
   view.openModal(view.openModalFn);
+  view._detectKeyDown();
 };
 
 init();
