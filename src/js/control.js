@@ -1,31 +1,30 @@
 'use strict';
 
-// const modal = document.querySelector('.modal');
-// const overlay = document.querySelector('.overlay');
-// const btnCloseModal = document.querySelector('.btn--close-modal');
-// const btnsOpenModal = document.querySelectorAll('.btn--opem--modal');
+import modalView from './views/modalView.js';
+import scrollView from './views/scrollView.js';
+import navView from './views/navView.js';
 
-// function openModal(e) {
-//   e.preventDefault();
-//   modal.classList.remove('hidden');
-//   overlay.classList.remove('hidden');
-// }
+const controlCloseModal = function () {
+  modalView.closeModalFn();
+};
 
-// function closeModal() {
-//   modal.classList.add('hidden');
-//   overlay.classList.add('hidden');
-// }
+const controlOpenModal = function () {
+  modalView.openModalFn();
+};
 
-// btnCloseModal.addEventListener('click', closeModal);
+const controlScroll = function (id) {
+  scrollView.scroll(id);
+};
 
-import view from './views/view.js';
-
-// view.openModal(view.openModalFn);
+const controlHover = function (e, opacity) {
+  navView.hover(e, opacity);
+};
 
 const init = function () {
-  view.closeModal(view.closeModalFn);
-  view.openModal(view.openModalFn);
-  view._detectKeyDown();
+  scrollView.scrollHandler(controlScroll);
+  modalView.openModalHandler(controlOpenModal);
+  modalView.closeModalHandler(controlCloseModal);
+  navView.hoverHandler(controlHover);
 };
 
 init();
