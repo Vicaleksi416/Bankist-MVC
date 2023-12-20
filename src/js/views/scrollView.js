@@ -2,13 +2,15 @@ class ScrollView {
   doc = document;
   btnScrollTo = document.querySelector('.btn--scroll-to');
   nav = document.querySelector('.nav');
+  allSections = document.querySelectorAll('.section');
 
-  scroll(id) {
-    const section = document.querySelector(`${id}`);
+  scrollTo(href) {
+    if (href === '') return;
+    const section = document.querySelector(`${href}`);
     section.scrollIntoView({ behavior: 'smooth' });
   }
 
-  scrollHandler(handler) {
+  scrollToHandler(handler) {
     this.btnScrollTo.addEventListener('click', function () {
       handler('#section--1');
     });
@@ -19,8 +21,29 @@ class ScrollView {
 
       if (!link) return;
 
-      const id = e.target.getAttribute('href');
-      handler(id);
+      const href = e.target.getAttribute('href');
+      handler(href);
+    });
+  }
+
+  revealSections(entries) {
+    const [entry] = entries;
+
+    if (entry.isIntersecting) {
+      entry.target.classList.remove('section--hidden');
+    } else {
+      entry.target.classList.add('section--hidden');
+    }
+  }
+
+  observeHandler(handler) {
+    const sectionObserver = new IntersectionObserver(handler, {
+      root: null,
+      threshold: 0.2,
+    });
+
+    this.allSections.forEach(section => {
+      sectionObserver.observe(section);
     });
   }
 }

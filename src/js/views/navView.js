@@ -1,5 +1,7 @@
-class HoverView {
+class NavView {
   nav = document.querySelector('.nav');
+  header = document.querySelector('.header');
+  navHeight = this.nav.getBoundingClientRect();
 
   hover(e, opacity) {
     const link = e.target;
@@ -29,6 +31,27 @@ class HoverView {
       handler(e, 1);
     });
   }
+
+  stickyNav(entries) {
+    const [entry] = entries;
+    // console.log(entry);
+
+    if (!entry.isIntersecting) {
+      this.nav.classList.add('sticky');
+    } else {
+      this.nav.classList.remove('sticky');
+    }
+  }
+
+  observeHandler(handler) {
+    const headerObserver = new IntersectionObserver(handler, {
+      root: null,
+      threshold: 0,
+      rootMargin: `-${this.navHeight.height}px`,
+    });
+
+    headerObserver.observe(this.header);
+  }
 }
 
-export default new HoverView();
+export default new NavView();

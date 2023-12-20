@@ -49,24 +49,24 @@
 //   }
 // });
 
-// Operation tabs
-const tabsContainer = document.querySelector('.operations__tab-container');
-const tabs = document.querySelectorAll('.operations__tab');
-const tabsContent = document.querySelectorAll('.operations__content');
+// // Operation tabs
+// const tabsContainer = document.querySelector('.operations__tab-container');
+// const tabs = document.querySelectorAll('.operations__tab');
+// const tabsContent = document.querySelectorAll('.operations__content');
 
-tabsContainer.addEventListener('click', function (e) {
-  const clickedTab = e.target.closest('.operations__tab');
+// tabsContainer.addEventListener('click', function (e) {
+//   const clickedTab = e.target.closest('.operations__tab');
 
-  if (!clickedTab) return;
+//   if (!clickedTab) return;
 
-  tabs.forEach(t => t.classList.remove('operations__tab--active'));
-  clickedTab.classList.add('operations__tab--active');
+//   tabs.forEach(t => t.classList.remove('operations__tab--active'));
+//   clickedTab.classList.add('operations__tab--active');
 
-  tabsContent.forEach(c => c.classList.remove('operations__content--active'));
-  document
-    .querySelector(`.operations__content--${clickedTab.dataset.tab}`)
-    .classList.add('operations__content--active');
-});
+//   tabsContent.forEach(c => c.classList.remove('operations__content--active'));
+//   document
+//     .querySelector(`.operations__content--${clickedTab.dataset.tab}`)
+//     .classList.add('operations__content--active');
+// });
 
 // // Menu fade animation
 
@@ -92,72 +92,72 @@ tabsContainer.addEventListener('click', function (e) {
 //   handleHover(e, 1);
 // });
 
-// Sticky Navigation
+// // Sticky Navigation
 
-const header = document.querySelector('.header');
-const navHeight = nav.getBoundingClientRect();
-// console.log(navHeight); // 90px
+// const header = document.querySelector('.header');
+// const navHeight = nav.getBoundingClientRect();
+// // console.log(navHeight); // 90px
 
-const stickyNav = function (entries) {
-  const [entry] = entries;
-  // console.log(entry);
+// const stickyNav = function (entries) {
+//   const [entry] = entries;
+//   // console.log(entry);
 
-  if (!entry.isIntersecting) nav.classList.add('sticky');
-  else nav.classList.remove('sticky');
-};
+//   if (!entry.isIntersecting) nav.classList.add('sticky');
+//   else nav.classList.remove('sticky');
+// };
 
-const headerObserver = new IntersectionObserver(stickyNav, {
-  root: null,
-  threshold: 0,
-  rootMargin: `-${navHeight.height}px`,
-});
-headerObserver.observe(header);
+// const headerObserver = new IntersectionObserver(stickyNav, {
+//   root: null,
+//   threshold: 0,
+//   rootMargin: `-${navHeight.height}px`,
+// });
+// headerObserver.observe(header);
 
-// Revealing Sections
+// // Revealing Sections
 
-const allSections = document.querySelectorAll('.section');
+// const allSections = document.querySelectorAll('.section');
 
-const revealSection = function (entries, _) {
-  const [entry] = entries;
-  // console.log(entry);
+// const revealSection = function (entries, _) {
+//   const [entry] = entries;
+//   // console.log(entry);
 
-  if (entry.isIntersecting) entry.target.classList.remove('section--hidden');
-  else entry.target.classList.add('section--hidden');
-};
+//   if (entry.isIntersecting) entry.target.classList.remove('section--hidden');
+//   else entry.target.classList.add('section--hidden');
+// };
 
-const sectionObserver = new IntersectionObserver(revealSection, {
-  root: null,
-  threshold: 0.2,
-});
+// const sectionObserver = new IntersectionObserver(revealSection, {
+//   root: null,
+//   threshold: 0.2,
+// });
 
-allSections.forEach(function (section) {
-  // section.classList.add('section--hidden');
-  sectionObserver.observe(section);
-});
+// allSections.forEach(function (section) {
+//   // section.classList.add('section--hidden');
+//   sectionObserver.observe(section);
+// });
 
-// Lazy loading Image
-const imgTarget = document.querySelectorAll('img[data-src]');
+// // Lazy loading Image
+// const imgTarget = document.querySelectorAll('img[data-src]');
 
-const loadImg = function (entries, observe) {
-  const [entry] = entries;
-  // console.log(enrty);
+// const loadImg = function (entries, observe) {
+//   const [entry] = entries;
+//   // console.log(enrty);
 
-  if (!entry.isIntersecting) return;
+//   if (!entry.isIntersecting) return;
 
-  entry.target.src = entry.target.dataset.src;
+//   entry.target.src = entry.target.dataset.src;
 
-  entry.target.addEventListener('load', function () {
-    entry.target.classList.remove('lazy-img');
-  });
-};
+//   entry.target.addEventListener('load', function () {
+//     entry.target.classList.remove('lazy-img');
+//   });
+// };
 
-const imgObserver = new IntersectionObserver(loadImg, {
-  root: null,
-  threshold: 0,
-  rootMargin: '-200px',
-});
+// const imgObserver = new IntersectionObserver(loadImg, {
+//   root: null,
+//   threshold: 0,
+//   rootMargin: '-200px',
+// });
 
-imgTarget.forEach(img => imgObserver.observe(img));
+// imgTarget.forEach(img => imgObserver.observe(img));
 
 // Slides
 

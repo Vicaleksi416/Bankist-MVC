@@ -3,6 +3,7 @@
 import modalView from './views/modalView.js';
 import scrollView from './views/scrollView.js';
 import navView from './views/navView.js';
+import divView from './views/divView.js';
 
 const controlCloseModal = function () {
   modalView.closeModalFn();
@@ -13,18 +14,41 @@ const controlOpenModal = function () {
 };
 
 const controlScroll = function (id) {
-  scrollView.scroll(id);
+  scrollView.scrollTo(id);
 };
 
 const controlHover = function (e, opacity) {
   navView.hover(e, opacity);
 };
 
+const controlStickNav = function (e) {
+  navView.stickyNav(e);
+};
+
+const controlSwitch = function (e) {
+  divView.switchTabsFn(e);
+};
+
+const controlReveal = function (e) {
+  scrollView.revealSections(e);
+};
+
+const controlLoadImg = function (e) {
+  divView.loadImg(e);
+};
+
 const init = function () {
-  scrollView.scrollHandler(controlScroll);
+  scrollView.scrollToHandler(controlScroll);
+  scrollView.observeHandler(controlReveal);
+
   modalView.openModalHandler(controlOpenModal);
   modalView.closeModalHandler(controlCloseModal);
+
   navView.hoverHandler(controlHover);
+  navView.observeHandler(controlStickNav);
+
+  divView.switchHanler(controlSwitch);
+  divView.observeHandler(controlLoadImg);
 };
 
 init();
