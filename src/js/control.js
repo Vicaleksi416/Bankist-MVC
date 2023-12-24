@@ -34,10 +34,6 @@ const controlReveal = function (e) {
   scrollView.revealSections(e);
 };
 
-const controlLoadImg = function (e) {
-  divView.loadImg(e);
-};
-
 const controlSlide = function (page) {
   slideView.goToSlide(page);
 };
@@ -53,7 +49,6 @@ const init = function () {
   navView.observeHandler(controlStickNav);
 
   divView.switchHanler(controlSwitch);
-  divView.observeHandler(controlLoadImg);
 
   slideView.initView();
   slideView.sldieHandler(controlSlide);

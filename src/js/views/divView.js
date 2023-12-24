@@ -27,29 +27,6 @@ class DivView {
       handler(clickedTab);
     });
   }
-
-  loadImg(entries) {
-    const [entry] = entries;
-    // console.log(enrty);
-
-    if (!entry.isIntersecting) return;
-
-    entry.target.src = entry.target.dataset.src;
-
-    entry.target.addEventListener('load', function () {
-      entry.target.classList.remove('lazy-img');
-    });
-  }
-
-  observeHandler(handler) {
-    const imgObserver = new IntersectionObserver(handler, {
-      root: null,
-      threshold: 0,
-      rootMargin: '-200px',
-    });
-
-    this.imgTarget.forEach(img => imgObserver.observe(img));
-  }
 }
 
 export default new DivView();
