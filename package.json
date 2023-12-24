@@ -9,9 +9,7 @@
   "keywords": [],
   "author": "Aleksi",
   "license": "ISC",
-  "dependencies": {
-    "jquery": "^3.7.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "parcel": "^2.10.3",
     "parcel-transformer-html-datasrc": "^1.3.3"
