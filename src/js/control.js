@@ -4,6 +4,7 @@ import modalView from './views/modalView.js';
 import scrollView from './views/scrollView.js';
 import navView from './views/navView.js';
 import divView from './views/divView.js';
+import slideView from './views/slideView.js';
 
 const controlCloseModal = function () {
   modalView.closeModalFn();
@@ -37,6 +38,10 @@ const controlLoadImg = function (e) {
   divView.loadImg(e);
 };
 
+const controlSlide = function (page) {
+  slideView.goToSlide(page);
+};
+
 const init = function () {
   scrollView.scrollToHandler(controlScroll);
   scrollView.observeHandler(controlReveal);
@@ -49,6 +54,9 @@ const init = function () {
 
   divView.switchHanler(controlSwitch);
   divView.observeHandler(controlLoadImg);
+
+  slideView.initView();
+  slideView.sldieHandler(controlSlide);
 };
 
 init();
