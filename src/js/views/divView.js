@@ -3,7 +3,6 @@ class DivView {
   tabsContainer = document.querySelector('.operations__tab-container');
   tabs = document.querySelectorAll('.operations__tab');
   tabsContent = document.querySelectorAll('.operations__content');
-
   imgTarget = document.querySelectorAll('img[data-src]');
 
   switchTabsFn(e) {
@@ -26,6 +25,28 @@ class DivView {
 
       handler(clickedTab);
     });
+  }
+
+  loadImg(entries, observe) {
+    const [entry] = entries;
+
+    if (!entry.isIntersecting) return;
+
+    entry.target.src = entry.target.dataset.src;
+
+    entry.target.addEventListener('load', function () {
+      entry.target.classList.remove('lazy-img');
+    });
+    // observe.unobserve(entry.target);
+  }
+
+  observeHandler(handler) {
+    const imgObserver = new IntersectionObserver(handler, {
+      root: null,
+      threshold: 0,
+    });
+
+    this.imgTarget.forEach(img => imgObserver.observe(img));
   }
 }
 

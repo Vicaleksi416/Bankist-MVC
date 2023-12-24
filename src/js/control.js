@@ -36,6 +36,11 @@ const controlReveal = function (e) {
 
 const controlSlide = function (page) {
   slideView.goToSlide(page);
+  slideView.activateDot(page);
+};
+
+const controlImg = function (e) {
+  divView.loadImg(e);
 };
 
 const init = function () {
@@ -49,6 +54,7 @@ const init = function () {
   navView.observeHandler(controlStickNav);
 
   divView.switchHanler(controlSwitch);
+  divView.observeHandler(controlImg);
 
   slideView.initView();
   slideView.sldieHandler(controlSlide);

@@ -7,6 +7,7 @@ class SlideView {
   initView() {
     this.goToSlide(0);
     this.createDots(this.dots);
+    this.activateDot(0);
   }
 
   goToSlide(curPos) {
@@ -56,6 +57,16 @@ class SlideView {
         `<button class="dots__dot" data-slide="${i}"></button>`
       );
     });
+  }
+
+  activateDot(sw) {
+    document
+      .querySelectorAll('.dots__dot')
+      .forEach(dot => dot.classList.remove('dots__dot--active'));
+
+    document
+      .querySelector(`.dots__dot[data-slide="${sw}"]`)
+      .classList.add('dots__dot--active');
   }
 }
 
