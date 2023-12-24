@@ -3,6 +3,7 @@ class ScrollView {
   btnScrollTo = document.querySelector('.btn--scroll-to');
   nav = document.querySelector('.nav');
   allSections = document.querySelectorAll('.section');
+  logo = document.querySelector('.nav__logo');
 
   scrollTo(href) {
     if (href === '') return;
@@ -21,6 +22,11 @@ class ScrollView {
 
       if (!link) return;
 
+      const href = e.target.getAttribute('href');
+      handler(href);
+    });
+
+    this.logo.addEventListener('click', function (e) {
       const href = e.target.getAttribute('href');
       handler(href);
     });
